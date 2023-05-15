@@ -1,0 +1,21 @@
+{
+  "name": "massa-sc-tester",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run compile && npm run execute",
+    "execute": "cargo run config/execution_config.yaml",
+    "compile": "asc config/main.ts -o config/build/main.wasm --transform @massalabs/as-transformer"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@assemblyscript/loader": "^0.27.5",
+    "@massalabs/as-transformer": "^0.1.3-dev.20230515163451",
+    "@massalabs/as-types": "^0.0.4-dev.20230515163451",
+    "@massalabs/massa-as-sdk": "^2.1.1-dev.20230502155025",
+    "assemblyscript": "^0.27.5"
+  }
+}

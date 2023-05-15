@@ -9,7 +9,7 @@
       - name: execute_main_function
         config:
             type: execute_sc
-            path: ./../dex/v2.1/build/main.wasm
+            path: ./config/build/main.wasm
             function: main
             parameter: []
             gas: 4294967295
@@ -24,7 +24,7 @@
         config:
             type: write_ledger_entry
             address: smart_contract_address
-            bytecode: ./../dex/v2.1/build/main.wasm
+            bytecode: ./config/build/main.wasm
             balance: 16
       # call the receive function of the previously saved smart contract
       - name: call_receive_function

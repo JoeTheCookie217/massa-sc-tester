@@ -2,3 +2,7 @@
 ledger.json
 trace.json
 .idea
+
+node_modules
+config/build/*
+!config/build/main.wasm
