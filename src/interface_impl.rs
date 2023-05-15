@@ -366,4 +366,20 @@ impl Interface for ExecutionContext {
         self.update_execution_trace(json)?;
         Ok(())
     }
+
+    fn caller_has_write_access(&self) -> Result<bool> {
+        let call_stack = self.get_call_stack()?;
+        let mut call_stack_iter = call_stack.iter().rev();
+        let caller_owned_addresses = if let Some(last) = call_stack_iter.next() {
+            if let Some(prev_to_last) = call_stack_iter.next() {
+                prev_to_last.clone()
+            } else {
+                last.clone()
+            }
+        } else {
+            bail!("not found")
+        };
+        let current_address = self.call_stack_peek()?.address;
+        Ok(caller_owned_addresses.contains(&current_address))
+    }
 }
